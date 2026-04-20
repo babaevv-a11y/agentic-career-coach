@@ -1,0 +1,7 @@
+Lead Orchestrator
+
+- Receives user request
+- Performs prompt-based routing
+- Decides whether to answer directly or delegate
+- Hands off backend-heavy work to Career Specialist
+- Returns final response to the user

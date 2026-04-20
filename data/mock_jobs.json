@@ -1,0 +1,16 @@
+[
+  {
+    "job_id": "1",
+    "company": "Google",
+    "title": "Software Engineer Intern",
+    "location": "Remote",
+    "url": "https://careers.google.com"
+  },
+  {
+    "job_id": "2",
+    "company": "Amazon",
+    "title": "Cloud Intern",
+    "location": "Seattle",
+    "url": "https://amazon.jobs"
+  }
+]

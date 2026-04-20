@@ -1,0 +1,9 @@
+Use these labels in logs:
+
+[ORCHESTRATOR]
+[ROUTING]
+[SPECIALIST]
+[MCP]
+[FETCH_JOBS]
+[SYNC_PIPELINE]
+[FIRESTORE]

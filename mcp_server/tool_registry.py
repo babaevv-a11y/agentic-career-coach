@@ -5,8 +5,9 @@ from services.pipeline_service import (
     update_pipeline_status
 )
 
-
-# Tool names here should stay aligned with the project spec.
+# This registry is the lookup table for tool names.
+# The idea is that the RPC layer does not need to know implementation details.
+# It only needs to know which backend function belongs to which tool name.
 TOOLS = {
     "fetch_jobs": fetch_jobs_from_file,
     "sync_pipeline": {

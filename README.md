@@ -58,3 +58,25 @@ agentic-career-coach/
 ├── requirements.txt
 └── README.md
 ```
+## How to Run the System (Demo Instructions)
+
+Open - https://acc-mcp-server-134991748283.us-east1.run.app/docs
+Find - POST /agent/run
+Paste the following - replace the word string withing the "" with the following "Find software engineering internships and save one to my pipeline."
+Click execute
+The following happens:
+User Request
+- Lead Orchestrator (Orchestrator Agent)
+- Career Specialist (Worker Agent)
+- MCP Server (/sse endpoint)
+- Firestore (pipeline persistence)
+- Final Response returned to user
+Then go to your google cloud account with your VCU email (you have been added as the editor). Search for the Cloud Run then click on acc-mcp-server and open Logs. You will see the following:
+[AGENT-RUN]
+[ORCHESTRATOR]
+[SPECIALIST]
+[MCP-SSE]
+[FETCH_JOBS]
+[FIRESTORE]
+What it does is, it demostrates Agent-to-Agent delegation (A2A), JSON-RPC over SSE (MCP), Backend tool execution, Data persistence.
+After that you can search for Firestore and click on internship_pipeline. You will see saved internship records created by the agent system.

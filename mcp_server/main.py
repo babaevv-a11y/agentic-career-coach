@@ -2,12 +2,19 @@ import json
 import asyncio
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 
 from mcp_server.schemas import JsonRpcRequest
 from mcp_server.rpc_handlers import handle_rpc_call
+from Agents.orchestrator_agent import handle_user_request
+
 
 app = FastAPI()
+
+
+class AgentRunRequest(BaseModel):
+    message: str
 
 
 @app.get("/")
@@ -20,6 +27,29 @@ def root():
 def health():
     print("[MCP] Health check route was called")
     return {"status": "ok"}
+
+
+@app.post("/agent/run")
+def agent_run(request: AgentRunRequest):
+    """
+    This is the main demo endpoint for the full agent flow.
+
+    It represents:
+    User request -> Lead Orchestrator -> Career Specialist -> MCP Server -> Firestore
+    """
+    print("[AGENT-RUN] New user request received")
+    print(f"[AGENT-RUN] User message: {request.message}")
+
+    result = handle_user_request(request.message)
+
+    print("[AGENT-RUN] Final response returned to user")
+
+    return {
+        "system": "Agentic Career Coach",
+        "flow": "Lead Orchestrator -> Career Specialist -> MCP Server -> Firestore",
+        "user_message": request.message,
+        "result": result
+    }
 
 
 @app.post("/rpc")

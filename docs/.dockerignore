@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.git/
+.gcp/
+.gcloud/
+.env
+gcp-key.json
+test_firestore.py
